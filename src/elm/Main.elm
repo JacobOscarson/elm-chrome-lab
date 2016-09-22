@@ -7,7 +7,7 @@ import Html.App as Html
 view : a -> Html b
 view model =
     div []
-        []
+        [ text "Render something I can see, pls" ]
 
 
 update : a -> b -> number
