@@ -2,19 +2,31 @@ module Main exposing (..)
 
 import Html exposing (Html, button, div, text)
 import Html.App as Html
+import Html.Events exposing (onClick)
 
 
-view : a -> Html b
+type Msg
+    = Increment
+    | Decrement
+
+
+view : a -> Html Msg
 view model =
     div []
-        [ text "Render something I can see, pls" ]
+        [ button [ onClick Decrement ] [ text "-" ]
+        , div [] [ text (toString model) ]
+        , button [ onClick Increment ] [ text "+" ]
+        ]
 
 
-update : a -> b -> number
+update : Msg -> number -> number
 update msg model =
     case msg of
-        _ ->
-            0
+        Increment ->
+            model + 1
+
+        Decrement ->
+            model - 1
 
 
 main : Program Never
